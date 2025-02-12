@@ -1,56 +1,107 @@
-<b><h1  align="center">🔥 WiFi Password Cracker Tool 🔥</h1> </b>
-<p align="center">
-  🚀 <strong>Automated CMD-Based WiFi Cracking Tool</strong> 🚀<br>
-  🎯 <i>For Educational & Penetration Testing Purposes Only</i>
-</p>
+# Batch Wi-Fi Brute Forcer
+An active attack tool against Wi-Fi networks with internal CMD commands.
 
-<p align="center">
-  <img src="https://github.com/chamidu200/Wifi-crack-password/blob/540a98d89a185417a31bcf6e194e59298971015f/hacking.gif" alt="Tool Banner" width="70%">
-</p>
+This program is created to be a proof of concept that it is possible
+to write a working Wi-Fi attack tool with Batchfiles since there 
+are countless examples on the internet that claims to be legit
+hacking tools, working on CMD. While this tool does not claim
+a 100% success ratio, it still works if the target Wi-Fi has
+weak password. :)
 
-<h2>⚠️ Disclaimer</h2>
-<p>🔴 <strong>This tool is strictly for ethical hacking and security research.</strong> Unauthorized use against networks you do not own is illegal and punishable by law.</p>
+## Usage
 
----
+### Interface initialization
+The program automatically detects your wireless interfaces when you execute the batch file.
+If it finds only one, it will select it as default. If there are multiple interfaces,
+the program will ask you to choose one. If none exist, it will stay "not_defined".
 
-<h2>🛠 Features</h2>
-<ul>
-  <li>✅ <b>Automated Attack Process</b> – Just run the script and follow the instructions.</li>
-  <li>✅ <b>Lightweight & Fast</b> – Works efficiently with CMD-based execution.</li>
-  <li>✅ <b>Wordlist Support</b> – Use custom wordlists to optimize cracking.</li>
-  <li>✅ <b>Simple Interface</b> – No complex configurations required.</li>
-</ul>
+> You can later change the interface by typing `interface` on the main menu.
+> This will bring the interface initialization screen back.
 
----
+### Scan
+When you type `scan` at the main menu, the program will enumerate all Wi-Fi networks
+available from the selected wireless interface. You can choose one by typing the number
+associated with an SSID.
 
-<h2>📌 How to Use</h2>
+> No Name could mean that the network is hidden. You cannot attack that network.
 
-<h3>🔹 Step 1: Extract the Tool</h3>
-<p>Unzip the <code>.rar</code> file and open the extracted folder.</p>
+> Performing a scan disconnects the interface from the network that it has connected previously.
 
-<h3>🔹 Step 2: Run the Attack Script</h3>
-<p>Open <b>CMD</b> and navigate to the tool directory, then type:</p>
-<pre><code>wifi_crack.cmd</code></pre>
-<p>Press <b>Enter</b>, and the tool will guide you through the process!</p>
+### Selecting a wordlist
+A wordlist file is already provided in the repository. If you want to use a custom
+wordlist, you have to specify the file you are going to use by typing `wordlist` on the 
+main menu and then typing the absolute or relative path of the wordlist file.
 
-<h3>🔹 Step 3: Wait for the Process</h3>
-<p>The tool will attempt to crack the WiFi network using the provided wordlist (<code>wordlist.txt</code>).</p>
+### Attacking
+Simply type `attack` and the program will show you a warning screen that this process is going
+to delete the profile associated with the SSID if you have connected to it before.
+It means you will lose the password you entered while connecting to that SSID before.
+Save it before using the attack.
 
----
+### Counter
+When a connection is attempted with `netsh` to a network, it takes time to establish the connection. To check whether the connection is successful,
+the program repeatedly queries the connection status of the selected interface. A counter value controls how many times this query will be done.
+If not changed, the counter value is 10, and counts down after each query for each password combination. 
 
-<h2>📜 File Structure</h2>
-<ul>
-  <li>📁 <b>Source Code Folder</b></li>
-  <li>📄 <code>wifi_crack.cmd</code> – Main execution script</li>
-  <li>📄 <code>BruteAttack.exe</code> – Core cracking tool</li>
-  <li>📄 <code>WordList.exe</code> – Dictionary attack manager</li>
-  <li>📄 <code>wordlist.txt</code> – Password wordlist</li>
-</ul>
+> If an authentication or association is detected, this value is increased by 5 to ensure a successful connection.
 
----
+## Limitations
+- This program has been tested unsuccessfully on Windows 7 and tested successfully on Windows 10 and 11. Since some commands may differ in terms of output between Windows versions, it is not expected to work on previous versions.
 
-<h2>⚠️ Important Notes</h2>
-<p>🚨 <b>This tool is for educational use only. Misuse can lead to serious legal consequences.</b></p>
-<p>🚨 <b>Always obtain permission before testing any network.</b></p>
+- ANSI escape sequences used in the terminal were added to the Windows Console in the Windows 10 version 1511, previous versions are not expected to run this program.
 
-<p align="center">👨‍💻 <b>Developed by SECURE HORIZON for cybersecurity research & ethical hacking training.</b></p>
+- There is a strict dependency on the command line utility `netsh`, meaning that it cannot understand "Unicode" characters. Only ASCII characters are supported for network names.
+
+- The command line utilities cannot be forced to output English-only text, which means parsing particularly depends on English-based output from command line utilities. Any other system language is not expected to be compatible with this program.
+
+- Speed is significantly slow due to its nature.
+
+- Cannot attack hidden networks.
+
+## Result file
+If an attack is successful, the result is automatically written to `result.txt`.
+
+
+## Help screen
+```txt
+Commands
+
+ - help             : Displays this page
+ - wordlist         : Provide a wordlist file     
+ - scan             : Performs a WI-FI scan       
+ - interface        : Open Interface Management   
+ - attack           : Attacks selected WI-FI      
+ - counter          : Sets the attack counter     
+ - exit             : Close the program
+
+ For more information, please refer to "README.md".
+
+ More projects from Secure Horizon [ M.R.C005 ]:
+ https://www.youtube.com/@chamidunimsara20052
+
+Press any key to continue...
+```
+
+## Contributors
+
+Huge thanks to everyone for their contributions to this project.
+
+- YOUTUBE : https://www.youtube.com/@chamidunimsara20052
+
+- TELEGRAM : https://t.me/hackingword24
+
+Hello Friends
+
+ඔයාල ට E|Hacking ගෘප් එකක් හැදුවා කැමති අය සෙට් වෙන්න අලුත් වැඩටිකක් පටන් ගන්නවා ඉස්සරහට
+
+Android Hacking 
+
+ PC Hacking 
+
+Etc
+
+පුලුවන් අය ගෘප් ලින්ක් එක ශෙයා කරලත් දෙන්නකො
+
+
+
+**Special thanks to the [MR.C005](https://www.youtube.com/@chamidunimsara20052), and YOUTUBE.**
